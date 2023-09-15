@@ -1,6 +1,6 @@
 # AutoRL Hydra Sweepers
 
-**DeepCave temporarily uninstalled for being incompatible with Python 3.10.**
+**Note: This fork updates the main repository, temporarily removing Deepcave for being incompatible with Python 3.10. This fork stays up to date by automatically merging with the main branch once per week.**
 
 This repository contains hydra sweeper versions of proven AutoRL tuning tools for plug-and-play use. 
 Currently included:
