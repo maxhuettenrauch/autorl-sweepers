@@ -1,5 +1,7 @@
 # AutoRL Hydra Sweepers
 
+**DeepCave temporarily uninstalled for being incompatible with Python 3.10.**
+
 This repository contains hydra sweeper versions of proven AutoRL tuning tools for plug-and-play use. 
 Currently included:
 - [Differential Evolution Hyperband](https://arxiv.org/pdf/2105.09821.pdf)

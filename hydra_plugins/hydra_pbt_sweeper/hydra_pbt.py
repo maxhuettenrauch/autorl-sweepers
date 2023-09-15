@@ -13,7 +13,6 @@ from ConfigSpace.hyperparameters import (
     OrdinalHyperparameter,
     UniformIntegerHyperparameter,
 )
-from deepcave import Objective, Recorder
 from hydra.utils import to_absolute_path
 from omegaconf import OmegaConf
 
@@ -52,7 +51,6 @@ class HydraPBT:
         wandb_project=False,
         wandb_entity=False,
         wandb_tags=["pbt"],
-        deepcave=False,
         maximize=False,
     ):
         """
@@ -190,11 +188,6 @@ class HydraPBT:
             ]
         )
 
-        self.deepcave = deepcave
-        if self.deepcave:
-            reward_objective = Objective("reward", optimize="lower")
-            deepcave_path = os.path.join(self.output_dir, "deepcave_logs")
-            self.deepcave_recorder = Recorder(self.configspace, objectives=[reward_objective], save_path=deepcave_path)
         self.wandb_project = wandb_project
         if self.wandb_project:
             wandb_config = OmegaConf.to_container(global_config, resolve=False, throw_on_missing=False)
@@ -660,15 +653,7 @@ class HydraPBT:
             opt_time_start = time.time()
             self.record_iteration(performances, configs)
             self.budget_history.append(self.config_interval)
-            if self.deepcave:
-                for _, (c, p) in enumerate(zip(configs, performances)):
-                    self.deepcave_recorder.start(config=c, budget=self.current_steps)
-                    self.deepcave_recorder.end(
-                        costs=p,
-                        config=c,
-                        budget=self.current_steps,
-                        additional={"iteration": self.iteration},
-                    )
+
             if verbose:
                 log.info(f"Finished Generation {self.iteration}!")
                 _, inc_performance = self.get_incumbent()

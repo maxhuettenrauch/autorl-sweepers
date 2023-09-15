@@ -1,5 +1,7 @@
 # Documentation for the Hydra AutoRL Sweepers
 
+**DeepCave temporarily uninstalled for being incompatible with Python 3.10.**
+
 This documentation aims to provide basic information on the sweepers contained in this project as well as how to use them in your project. 
 For in more information, we recommend the algorithms' original papers and our examples.
 

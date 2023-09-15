@@ -9,21 +9,6 @@ from hydra_plugins.hydra_pbt_sweeper.hydra_pbt import HydraPBT
 from utils import run_short_dehb, run_short_pbt
 
 
-def test_deepcave_logs():
-    outdir = "./tests/dummy_logs"
-    run_short_dehb(outdir, ["+hydra.sweeper.dehb_kwargs.deepcave=true"])
-    assert os.path.exists(os.path.join(outdir, "deepcave_logs"))
-    assert os.path.isfile(os.path.join(outdir, "deepcave_logs/run_1/configs.json"))
-    assert os.path.isfile(os.path.join(outdir, "deepcave_logs/run_1/history.jsonl"))
-    shutil.rmtree(outdir, ignore_errors=True)
-
-    run_short_pbt(outdir, ["+hydra.sweeper.pbt_kwargs.deepcave=true"])
-    assert os.path.exists(os.path.join(outdir, "deepcave_logs"))
-    assert os.path.isfile(os.path.join(outdir, "deepcave_logs/run_1/configs.json"))
-    assert os.path.isfile(os.path.join(outdir, "deepcave_logs/run_1/history.jsonl"))
-    shutil.rmtree(outdir, ignore_errors=True)
-
-
 def test_wandb_logs():
     try:
         HydraDEHB(

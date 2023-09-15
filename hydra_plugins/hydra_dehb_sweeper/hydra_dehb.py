@@ -8,7 +8,6 @@ from copy import deepcopy
 
 import numpy as np
 import wandb
-from deepcave import Objective, Recorder
 from dehb.optimizers import dehb
 from hydra.utils import to_absolute_path
 from omegaconf import OmegaConf
@@ -47,7 +46,6 @@ class HydraDEHB(dehb.DEHB):
         wandb_project=False,
         wandb_entity=False,
         wandb_tags=["dehb"],
-        deepcave=False,
         maximize=False,
         **kwargs,
     ):
@@ -93,11 +91,6 @@ class HydraDEHB(dehb.DEHB):
         self.opt_time = 0
         self.maximize = maximize
 
-        self.deepcave = deepcave
-        if self.deepcave:
-            reward_objective = Objective("reward", optimize="lower")
-            deepcave_path = os.path.join(self.output_path, "deepcave_logs")
-            self.deepcave_recorder = Recorder(self.cs, objectives=[reward_objective], save_path=deepcave_path)
         self.wandb_project = wandb_project
         if self.wandb_project:
             wandb_config = OmegaConf.to_container(global_config, resolve=False, throw_on_missing=False)
@@ -385,10 +378,6 @@ class HydraDEHB(dehb.DEHB):
                                 cost {round(launching_jobs[i]["cost"], 2)}'
                         )
 
-                if self.deepcave:
-                    for job in launching_jobs:
-                        self.deepcave_recorder.start(config=job["cs_config"], budget=job["budget"])
-                        self.deepcave_recorder.end(costs=job["fitness"], config=job["cs_config"], budget=job["budget"])
 
                 opt_time_start = time.time()
                 self._fetch_results_from_workers()

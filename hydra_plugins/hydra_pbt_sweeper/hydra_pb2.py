@@ -51,7 +51,6 @@ class HydraPB2(HydraPBT):
         wandb_project=False,
         wandb_entity=False,
         wandb_tags=["pbt"],
-        deepcave=False,
         maximize=False,
     ):
         """
@@ -126,7 +125,6 @@ class HydraPB2(HydraPBT):
             wandb_project=wandb_project,
             wandb_entity=wandb_entity,
             wandb_tags=wandb_tags,
-            deepcave=deepcave,
             maximize=maximize,
         )
         self.categorical_mutation = categorical_mutation
