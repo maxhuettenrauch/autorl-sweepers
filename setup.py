@@ -13,10 +13,10 @@ def read_file(filepath: str) -> str:
 
 extras_require = {
     "dehb": ["dehb @ git+https://github.com/automl/DEHB.git@master"],
-    "pb2": ["GPy==1.10.0", "scipy==1.11.1", "scikit-learn==1.3.0"],
-    "bgt": ["gpytorch==1.11", "scipy==1.11.1", "scikit-learn==1.3.0"],
+    "pb2": ["GPy>=1.10.0", "scipy>=1.11.1", "scikit-learn>=1.3.0"],
+    "bgt": ["gpytorch>=1.11", "scipy>=1.11.1", "scikit-learn>=1.3.0"],
     "dev": ["pytest", "pytest-cov", "black", "flake8", "isort", "mypy"],
-    "examples": ["stable-baselines3[extra]==2.0.0"]
+    "examples": ["stable-baselines3[extra]>=2.0.0"]
 }
 
 setuptools.setup(
@@ -31,15 +31,15 @@ setuptools.setup(
     packages=setuptools.find_namespace_packages(include=["hydra_plugins.*"], exclude=["tests"]),
     python_requires=">=3.9",
     install_requires=[
-        "hydra-core==1.3.2",
-        "rich==13.4.2",
-        "hydra_colorlog==1.2.0",
-        "hydra-submitit-launcher==1.2.0",
-        "pandas==2.0.3",
-        "configspace==0.7.1",
-        "numpy==1.23",
-        "wandb==0.15.5",
-        "pre-commit==3.3.3",
+        "hydra-core>=1.3.2",
+        "rich>=13.4.2",
+        "hydra_colorlog>=1.2.0",
+        "hydra-submitit-launcher>=1.2.0",
+        "pandas>=2.0.3",
+        "configspace>=0.7.1",
+        "numpy>=1.23",
+        "wandb>=0.15.5",
+        "pre-commit>=3.3.3",
     ],
     extras_require=extras_require,
     test_suite="pytest",
