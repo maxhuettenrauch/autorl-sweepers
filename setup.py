@@ -40,6 +40,11 @@ setuptools.setup(
         "numpy>=1.23",
         "wandb>=0.15.5",
         "pre-commit>=3.3.3",
+        "dehb @ git+https://github.com/automl/DEHB.git@master",
+        "GPy>=1.10.0",
+        "gpytorch>=1.11",
+        "scipy>=1.11.1",
+        "scikit-learn>=1.3.0"
     ],
     extras_require=extras_require,
     test_suite="pytest",
