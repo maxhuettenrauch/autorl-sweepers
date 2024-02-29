@@ -12,7 +12,7 @@ def read_file(filepath: str) -> str:
 
 
 extras_require = {
-    "dehb": ["dehb @ git+https://github.com/automl/DEHB.git@master"],
+    "dehb": ["dehb==0.0.7"],
     "pb2": ["GPy>=1.10.0", "scipy>=1.11.1", "scikit-learn>=1.3.0"],
     "bgt": ["gpytorch>=1.11", "scipy>=1.11.1", "scikit-learn>=1.3.0"],
     "dev": ["pytest", "pytest-cov", "black", "flake8", "isort", "mypy"],
@@ -40,7 +40,7 @@ setuptools.setup(
         "numpy>=1.23",
         "wandb>=0.15.5",
         "pre-commit>=3.3.3",
-        "dehb @ git+https://github.com/automl/DEHB.git@master",
+        "dehb==0.0.7",
         "GPy>=1.10.0",
         "gpytorch>=1.11",
         "scipy>=1.11.1",
